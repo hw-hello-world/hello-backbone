@@ -1,0 +1,22 @@
+{
+  "name": "hello-backbone",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel backbone-es6/main-decorator.js -o backbone-es6/main-decorator-dist.js",
+    "start": "serve"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/cli": "^7.15.7",
+    "@babel/core": "^7.15.8",
+    "@babel/plugin-proposal-decorators": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "backbone": "^1.4.0",
+    "serve": "^12.0.1",
+    "underscore": "^1.13.1"
+  }
+}
