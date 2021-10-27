@@ -3,9 +3,9 @@
 
   const FooModel = Backbone.Model.extend({
     idAttribute: 'fooId',
-    fooName: 'foo',
+    className: 'foo',
     getFullName() {
-      return 'Hello, ' + this.fooName;
+      return 'Hello, ' + this.className;
     },
 
     constructor: function(attr, options) {
@@ -14,8 +14,8 @@
       console.group('FooModel constructor');
 
       console.log('after invoke super.');
-      console.log('this.fooName: %s', this.fooName);
-      console.log('this.className: %s', this.idAttribute);
+      console.log('this.className: %s', this.className);
+      console.log('this.idAttribute: %s', this.idAttribute);
 
       console.groupEnd();
     }
@@ -23,13 +23,13 @@
 
   class ChildAModel extends FooModel {
     idAttribute = 'childId'
-    fooName = 'child'
+    className = 'child'
   };
 
   class ChildBModel extends FooModel {
     preinitialize() {
       this.idAttribute = 'childId';
-      this.fooName = 'child';
+      this.className = 'child';
     }
   };
 
