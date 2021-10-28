@@ -1,3 +1,13 @@
+/**
+ * Parent class
+ * - use preinitialize
+ * - convert to ES6 class
+ * - use decorator to set properties
+ *
+ * Child class
+ * - convert to es6
+ * - use decorator to set properties
+ */
 (function() {
   function props(value) {
     return function dec(target, key, description) {

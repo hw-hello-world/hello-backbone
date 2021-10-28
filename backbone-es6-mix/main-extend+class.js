@@ -1,3 +1,11 @@
+/**
+ * Refactoring Parent class
+ * - to use preinitialize
+ * - to use _.result to read properties
+ *
+ * With that, child class can be converted to ES6 class
+ * - convert properties to function
+ */
 (function() {
   console.group('Backbone ES6 Extend+Class');
 
@@ -38,7 +46,6 @@
   })
 
   class ChildModel extends FooModel {
-    // not able to override parent property
     idAttribute() { return 'childId'; }
     fooName() { return 'child'; }
     bar() { return true; }

@@ -1,3 +1,12 @@
+/**
+ * Refactoring Parent class
+ * - use preinitialize
+ * - use _.result to read properties
+ * - convert to ES6 class
+ *
+ * Child class
+ * - can still using `.extend` without any code changes.
+ */
 
 (function() {
   console.group('Backbone ES6 Class+Extend');

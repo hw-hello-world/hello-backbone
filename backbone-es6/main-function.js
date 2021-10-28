@@ -1,3 +1,13 @@
+/**
+ * Parent class
+ * - use preinitialize
+ * - use _.result to read properties
+ * - convert to ES6 class
+ *
+ * Child class
+ * - convert properties to function
+ * - conver to es6
+ */
 (function() {
   console.group('Backbone ES6 Class + functions (works)');
 

@@ -1,3 +1,13 @@
+/**
+ * Parent class
+ * - use preinitialize
+ * - convert to ES6 class
+ * - call `.prototype` to set properties directly.
+ *
+ * Child class
+ * - convert to es6
+ * - call `.prototype` to set properties directly.
+ */
 (function() {
   console.group('Backbone ES6 Class + prototype (works)');
 
