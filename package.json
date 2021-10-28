@@ -4,8 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "babel backbone-es6/main-decorator.js -o backbone-es6/main-decorator-dist.js",
-    "start": "serve"
   },
   "keywords": [],
   "author": "",

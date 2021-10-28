@@ -19,6 +19,9 @@ class FooModel extends Backbone.Model {
   fooName = 'foo';
 
   constructor(attr, options) {
+    if (this.fooName) {
+
+    }
     super(attr, options);
     console.group('FooModel constructor');
     console.log('after invoke super.');

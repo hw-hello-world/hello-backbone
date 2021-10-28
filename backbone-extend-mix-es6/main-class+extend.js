@@ -48,10 +48,10 @@
   // Unless compile down to ES5: https://babeljs.io/repl/
   // TODO: integrates babel
   //
-  // const cm = new ChildModel();
+  const cm = new ChildAModel();
   console.log('Child model', ChildAModel);
-  // console.log('child model', cm);
-  // console.log('child model', cm.className);
+  console.log('child model', cm);
+  console.log('child model', cm.className);
 
   console.groupEnd();
 
