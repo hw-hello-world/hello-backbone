@@ -5,26 +5,31 @@
     }
   }
 
-  console.group('Backbone ES6 class - decorator');
+  console.group('Backbone ES6 Class + decorator (works)');
 
   @props({
     idAttribute: 'fooId',
-    fooName: 'foo',
+    fooName: null,
   })
   class FooModel extends Backbone.Model {
 
+    preinitialize() {
+      if (this.fooName) {
+        this.fooName = this.fooName + ' o-model';
+      } else {
+        this.fooName = 'o-model';
+      }
+
+      console.log('this.fooName: %s', this.fooName);
+      console.log('this.idAttribute: %s', this.idAttribute);
+    }
+
     constructor(attr, options) {
       super(attr, options);
-      console.group('FooModel constructor');
-      console.log('after invoke super.');
 
-      // expects 'foo'
-      // works in green browsers (chrome, ff, safari)
-      console.log('this.idAttribute: %s', this.idAttribute);
-      console.log('this.fooName: %s', this.fooName);
-      console.log('this.getFullName: %s', this.getFullName());
-
-      console.groupEnd();
+      if (this.bar) {
+        console.log('this.bar: %s', this.bar);
+      }
     }
 
     getFullName() {
@@ -32,6 +37,9 @@
     }
   }
 
+  FooModel.prototype.idAttribute = 'fooId';
+  FooModel.prototype.fooName = null;
+  FooModel.prototype.bar = false;
 
   @props({
     idAttribute: 'childId',
@@ -43,11 +51,19 @@
     }
   };
 
-  const fm = new FooModel();
-  const cm = new ChildModel();
+  ChildModel.prototype.idAttribute = 'childId';
+  ChildModel.prototype.fooName = 'child';
+  ChildModel.prototype.bar = true;
 
-  console.log(fm);
-  console.log(cm);
+  console.group('Init FooModel');
+  const fm = new FooModel();
+  console.log('foo model', fm);
+  console.groupEnd();
+
+  console.group('Init ChildModel');
+  const cm = new ChildModel();
+  console.log('child model', cm);
+  console.groupEnd();
 
   console.groupEnd();
 

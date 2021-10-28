@@ -1,6 +1,5 @@
 FILES = backbone-es6/main-decorator \
-  backbone-extend-mix-es6/main-extend+class+extend \
-  backbone-extend-mix-es6/main-class+extend
+  backbone-es6-mix/main-class+extend
 
 start:
 	yarn serve

@@ -3,38 +3,52 @@
 
   const FooModel = Backbone.Model.extend({
     idAttribute: 'fooId',
-    fooName: 'foo',
-    getFullName() {
-      return 'Hello, ' + this.fooName;
-    },
+
+    fooName: null,
+
+    bar: false,
 
     /**
      * Cannot be `constructor() {...}`
      */
     constructor: function(attr, options) {
-      console.group('FooModel constructor');
+      if (this.fooName) {
+        this.fooName = this.fooName + ' o-model';
+      } else {
+        this.fooName = 'o-model';
+      }
 
-      console.log('Before invoke super.');
-      console.log('this.fooName: %s', this.fooName); // expects 'foo'
-      console.log('this.className: %s', this.idAttribute);
+      console.log('this.fooName: %s', this.fooName);
+      console.log('this.idAttribute: %s', this.idAttribute);
 
       Backbone.Model.apply(this, arguments);
 
-      console.log('after invoke super.');
-      console.groupEnd();
-    }
+      if (this.bar) {
+        console.log('this.bar: %s', this.bar);
+      }
+    },
+
+    getFullName() {
+      return 'Hello, ' + this.fooName;
+    },
+
   });
 
   const ChildModel = FooModel.extend({
     idAttribute: 'childId',
     fooName: 'child',
+    bar: true,
   });
 
+  console.group('Init FooModel');
   const fm = new FooModel();
-  const cm = new ChildModel();
+  console.log('foo model', fm);
+  console.groupEnd();
 
-  console.log(fm);
-  console.log(cm);
+  console.group('Init ChildModel');
+  const cm = new ChildModel();
+  console.log('child model', cm);
+  console.groupEnd();
 
   console.groupEnd();
 })();
