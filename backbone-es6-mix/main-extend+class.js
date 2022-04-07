@@ -9,7 +9,7 @@
 (function() {
   console.group('Backbone ES6 Extend+Class');
 
-  const FooModel = Backbone.Model.extend({
+  const BaseModel = Backbone.Model.extend({
     idAttribute: 'fooId',
 
     fooName: null,
@@ -26,10 +26,10 @@
 
       console.log('this.fooName: %s', this.fooName);
       console.log('this.idAttribute: %s', _.result(this, 'idAttribute'));
+
     },
 
     constructor: function(attr, options) {
-
       Backbone.Model.apply(this, arguments);
 
       const bar = _.result(this, 'bar');
@@ -45,18 +45,24 @@
 
   })
 
-  class ChildModel extends FooModel {
+  BaseModel.isCourageModel = true;
+
+  class ChildModel extends BaseModel {
     idAttribute() { return 'childId'; }
+
     fooName() { return 'child'; }
+    // fooName = 'child';
+
     bar() { return true; }
 
     getFullName() {
       return 'overrides fullname in child';
     }
   };
+  class GC extends ChildModel {}
 
   console.group('Init FooModel');
-  const fm = new FooModel();
+  const fm = new BaseModel();
   console.log('foo model', fm);
   console.groupEnd();
 

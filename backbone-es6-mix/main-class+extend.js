@@ -11,7 +11,7 @@
 (function() {
   console.group('Backbone ES6 Class+Extend');
 
-  class FooModel extends Backbone.Model {
+  class BaseModel extends Backbone.Model {
 
     idAttribute() { return 'fooId'; }
 
@@ -46,7 +46,13 @@
     }
   }
 
-  const ChildModel = FooModel.extend({
+  const FooModel = Backbone.Model.extend({
+    constructor(attr, option) {
+      Backbone.Model.apply(this, arguments);
+    }
+  })
+
+  const ChildModel = BaseModel.extend({
     // not able to override parent property
     idAttribute: 'childId',
     fooName: 'child',
@@ -58,7 +64,7 @@
   });
 
   console.group('Init FooModel');
-  const fm = new FooModel();
+  const fm = new BaseModel();
   console.log('foo model', fm);
   console.groupEnd();
 
@@ -66,6 +72,8 @@
   const ccm = new ChildModel();
   console.log('child model', ccm);
   console.groupEnd();
+
+  console.log(new FooModel());
 
   console.groupEnd();
 
